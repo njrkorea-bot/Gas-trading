@@ -625,6 +625,8 @@ body{{background:#f0f2f5;color:#1a1a2e;font-family:Arial,sans-serif;min-height:1
     <button class="tab-btn active" onclick="show('us',this)">US</button>
     <button class="tab-btn"        onclick="show('eu',this)">EU</button>
     <button class="tab-btn"        onclick="show('gl',this)">Macroeconomic</button>
+    <button class="tab-btn"        onclick="show('in',this)">Insight</button>
+    <button class="tab-btn"        onclick="show('mo',this)">Modelling</button>
   </div>
   <div class="nav-time">Updated: {ts}</div>
 </nav>
@@ -664,7 +666,17 @@ body{{background:#f0f2f5;color:#1a1a2e;font-family:Arial,sans-serif;min-height:1
 
 <!-- ═══════════════════════ GLOBAL FLOWS ═══════════════════════ -->
 <div id="gl" class="panel">
-  <div class="placeholder">🌍 US LNG export destinations by country — coming soon</div>
+  <div class="placeholder">Macroeconomic indicators — coming soon</div>
+</div>
+
+<!-- ═══════════════════════ INSIGHT ═══════════════════════ -->
+<div id="in" class="panel">
+  <div class="placeholder">Market insights &amp; analysis — coming soon</div>
+</div>
+
+<!-- ═══════════════════════ MODELLING ═══════════════════════ -->
+<div id="mo" class="panel">
+  <div class="placeholder">Price modelling &amp; forecasting — coming soon</div>
 </div>
 
 <script>

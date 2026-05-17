@@ -1,0 +1,38 @@
+name: Update LNG Dashboard
+
+on:
+  schedule:
+    # Runs at 15:00 UTC daily (EIA publishes Henry Hub data by then)
+    - cron: '0 15 * * *'
+  workflow_dispatch:  # allows manual trigger from GitHub Actions UI
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate dashboard
+        env:
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+        run: python generate_dashboard.py
+
+      - name: Commit and push updated dashboard
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add index.html henry_hub_10y.csv lng_exports.csv
+          git diff --staged --quiet || git commit -m "Update dashboard $(date -u +%Y-%m-%d)"
+          git push

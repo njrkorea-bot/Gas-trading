@@ -5,6 +5,9 @@ on:
     # Runs at 15:00 UTC daily (EIA publishes Henry Hub data by then)
     - cron: '0 15 * * *'
   workflow_dispatch:  # allows manual trigger from GitHub Actions UI
+  push:
+    branches:
+      - main
 
 jobs:
   update:
